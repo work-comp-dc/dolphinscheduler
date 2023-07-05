@@ -122,6 +122,14 @@ export function useDependent(model: { [field: string]: any }): IJsonItem[] {
         label: t('project.node.this_week')
       },
       {
+        value: 'thisMonday',
+        label: t('project.node.this_monday')
+      },
+      {
+        value: 'thisMondayT-1',
+        label: t('project.node.this_monday_t1')
+      },
+      {
         value: 'lastWeek',
         label: t('project.node.last_week')
       },

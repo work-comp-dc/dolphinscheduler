@@ -566,6 +566,8 @@ export default {
     last_3_days: 'Last3Days',
     last_7_days: 'Last7Days',
     this_week: 'ThisWeek',
+    this_monday: 'ThisMonday',
+    this_monday_t1: 'thisMondayT-1',
     last_week: 'LastWeek',
     last_monday: 'LastMonday',
     last_tuesday: 'LastTuesday',

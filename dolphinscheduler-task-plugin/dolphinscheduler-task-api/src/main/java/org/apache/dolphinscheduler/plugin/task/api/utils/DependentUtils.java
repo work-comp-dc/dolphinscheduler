@@ -17,6 +17,7 @@
 
 package org.apache.dolphinscheduler.plugin.task.api.utils;
 
+import org.apache.dolphinscheduler.common.utils.DateUtils;
 import org.apache.dolphinscheduler.plugin.task.api.enums.DependResult;
 import org.apache.dolphinscheduler.plugin.task.api.enums.DependentRelation;
 import org.apache.dolphinscheduler.plugin.task.api.model.DateInterval;
@@ -68,6 +69,7 @@ public class DependentUtils {
      * @return date interval list by business date and date value.
      */
     public static List<DateInterval> getDateIntervalList(Date businessDate, String dateValue) {
+        Date preBizDate = DateUtils.addDays(businessDate, -1);
         List<DateInterval> result = new ArrayList<>();
         switch (dateValue) {
             case "currentHour":
@@ -102,6 +104,17 @@ public class DependentUtils {
                 break;
             case "thisWeek":
                 result = DependentDateUtils.getThisWeekInterval(businessDate);
+                break;
+            case "thisMonday":
+                result = DependentDateUtils.getThisWeekInterval(businessDate, 1);
+                break;
+            case "thisMondayT-1":
+                result = DependentDateUtils.getThisWeekInterval(preBizDate, 1);
+                // 因为传入的是业务日期，实际的是t-1的业务日期，所以需要加一天加回来
+                for (DateInterval interval : result) {
+                    interval.setStartTime(DateUtils.addDays(interval.getStartTime(), 1));
+                    interval.setEndTime(DateUtils.addDays(interval.getEndTime(), 1));
+                }
                 break;
             case "lastWeek":
                 result = DependentDateUtils.getLastWeekInterval(businessDate);

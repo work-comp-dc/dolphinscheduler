@@ -560,6 +560,8 @@ export default {
     last_3_days: '前三天',
     last_7_days: '前七天',
     this_week: '本周',
+    this_monday: '本周一',
+    this_monday_t1: '本周一(T-1)',
     last_week: '上周',
     last_monday: '上周一',
     last_tuesday: '上周二',
